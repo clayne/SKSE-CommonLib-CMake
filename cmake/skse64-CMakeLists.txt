@@ -1,0 +1,41 @@
+cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+
+project(skse64 LANGUAGES CXX)
+
+file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
+file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+
+add_library(skse64 STATIC ${headers} ${sources}
+        # these files are for whatever reason in skse64_common
+        ${CMAKE_CURRENT_LIST_DIR}/../skse64_common/skse_version.h
+        ${CMAKE_CURRENT_LIST_DIR}/../skse64_common/skse_version.rc)
+
+set_source_files_properties(${CMAKE_CURRENT_LIST_DIR}/../skse64_common/skse_version.rc PROPERTIES LANGUAGE RC)
+
+# include common
+include_directories(${CMAKE_CURRENT_LIST_DIR}/../../)
+target_link_libraries(skse64 common)
+
+# include skse64_common
+include_directories(${CMAKE_CURRENT_LIST_DIR}/../)
+target_link_libraries(skse64 skse64_common)
+
+# include xbyak
+target_link_libraries(skse64 xbyak)
+
+# fix compile options
+target_compile_options(skse64 PRIVATE
+        # Warning Level: Level3
+        /W3
+        # Runtime Library: Multi-threaded Debug
+        /MTd
+        # Optimization: Disabled
+        /Od
+        # Force Include File: common/IPrefix.h
+        /FIcommon/IPrefix.h
+        # Not sure those two are correct:
+        # PreprocessorDefinitions: RUNTIME_VERSION
+        /DRUNTIME_VERSION=0x01050610
+        # PreprocessorDefinitions: EDITOR_VERSION
+        /DEDITOR_VERSION=0x01050610
+        )
