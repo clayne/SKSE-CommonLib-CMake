@@ -4,4 +4,10 @@ project(Umbrella)
 
 include(cmake/CPM.cmake)
 include(cmake/Packages.cmake)
-include(cmake/skse.cmake)
+
+if(USE_SKSE)
+    include(cmake/SKSE.cmake)
+endif()
+if(USE_COMMONLIB)
+    include(cmake/CommonLib.cmake)
+endif()

@@ -2,7 +2,10 @@ if(NOT MSVC)
     message(FATAL_ERROR "Building SKSE requires MSVC!")
 endif()
 
+# Change Version here
 set(SKSE_VERSION "2_00_19")
+
+# Download URL
 set(SKSE_DOWNLOAD_URL "https://skse.silverlock.org/beta/skse64_${SKSE_VERSION}.7z")
 
 # Download Path
@@ -73,6 +76,7 @@ COPY_IF_NOT_EXIST(common-CMakeLists.txt ${SKSE_SOURCE_PATH}/common/CMakeLists.tx
 COPY_IF_NOT_EXIST(skse64_common-CMakeLists.txt ${SKSE_SOURCE_PATH}/skse64/skse64_common/CMakeLists.txt)
 
 # skse64
+COPY_IF_NOT_EXIST(skse64-CMakeLists.txt ${SKSE_SOURCE_PATH}/skse64/skse64/CMakeLists.txt)
 
 # Include in project
 add_subdirectory(${SKSE_SOURCE_PATH})
