@@ -2,6 +2,9 @@ if(NOT MSVC)
     message(FATAL_ERROR "Building SKSE requires MSVC!")
 endif()
 
+include(cmake/CPM.cmake)
+include(cmake/Packages.cmake)
+
 # Change Version here
 set(SKSE_VERSION "2_00_19")
 

@@ -39,3 +39,5 @@ if(NOT EXISTS ${COMMONLIB_SOURCE_PATH})
         file(COPY ${X} DESTINATION ${COMMONLIB_SOURCE_PATH})
     endforeach()
 endif()
+
+add_subdirectory(${COMMONLIB_SOURCE_PATH})
