@@ -1,0 +1,12 @@
+{
+    "cmake.generator": "Visual Studio 16 2019",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureSettings": {
+        "USE_SKSE": "YES",
+        "CMAKE_TOOLCHAIN_FILE": "E:/Tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    },
+    "cSpell.words": [
+        "SDKs",
+        "vcpkg"
+    ]
+}

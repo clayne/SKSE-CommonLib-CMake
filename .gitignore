@@ -1,4 +1,12 @@
-cmake-**
+# Pulled code
 skse64/**
 CommonLibSSE/**
+
+# IDE stuff
 .idea/**
+.vs/**
+
+# Outputs
+cmake-**
+build/**
+out/**
